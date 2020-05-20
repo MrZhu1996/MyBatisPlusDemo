@@ -1,0 +1,49 @@
+server:
+  port:8024
+
+#数据源
+spring:
+  datasource:
+      type: com.zaxxer.hikari.HikariDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/mp?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2b8
+      username: root
+      password: root
+  freemarker:
+    check-template-location: false
+
+#mybatis-plus相关配置
+mybatis-plus:
+  #xml扫描，多个目录用逗号或者分号分隔（告诉Mapper所对应的xml文件位置）
+  mapper-locations: classpath*:mapper/*.xml
+  #以下配置均有默认值，可以不配置
+  global-config:
+    db-config:
+      #主键类型 AUTO:"数据库ID自增" INPUT:"用户输入ID",ID_WORKER:"全局唯一ID(数字类型唯一ID)"
+      id-type: auto
+      #字段策略 IGNORED:"忽略判断" NOT_NULL:"非 NULL 判断") NOT_EMPTY:"非空判断"
+      field-strategy: not_empty
+      #数据库类型
+      db-type: mysql
+      #表名配置策略
+      table-prefix: mp_
+      table-underline: true
+    configuration:
+      # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+      map-underscore-to-camel-case: true
+      # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+      call-setters-on-nulls: true
+      # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  config-location:
+    classpath: mybatis-config.xml
+  type-aliases-package: com.mp.entiy
+
+
+logging:
+  level:
+    root: warn
+    com.mp.dao: trace
+  pattern:
+    #%p:日志级别 %m:日志内容 %n:换行
+    console: '%p%m%n'

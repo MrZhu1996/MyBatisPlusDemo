@@ -1,0 +1,10 @@
+此Demo为mybatisPlus入门的示例Demo
+视频连接为：慕课网https://www.imooc.com/video/19508
+包含了：
+1.快速入门
+2.基本使用
+3.MyBatis-Plus查询方法
+4.自定义sql及分页查询
+5.跟新及删除
+6.AR模式、主键策略和基本配置
+7.通用service
